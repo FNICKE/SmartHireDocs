@@ -1,10 +1,9 @@
-const express = require('express');
-const { getPortfolio, savePortfolio } = require('../controllers/portfolioController');
-const protect = require('../middleware/authMiddleware');
+import express from 'express';
+import { createPortfolio, getPortfolio } from '../controllers/portfolioController.js';
 
 const router = express.Router();
 
-router.get('/', protect, getPortfolio);
-router.post('/', protect, savePortfolio);
+router.post('/create', createPortfolio);
+router.get('/:userId', getPortfolio);
 
-module.exports = router;
+export default router;

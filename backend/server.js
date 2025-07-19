@@ -1,12 +1,11 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const portfolioRoutes = require('./routes/portfolioRoutes');
+// server.js (ESM version)
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
-
-
+import authRoutes from './routes/authRoutes.js';
+import portfolioRoutes from './routes/portfolioRoutes.js';
 
 
 dotenv.config();
@@ -16,12 +15,13 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 
-// Routes
 app.get('/', (req, res) => {
-    res.send('SkillForge API is running...');
+  res.send('SkillForge API is running...');
 });
 
 // DB Connection
